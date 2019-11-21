@@ -178,3 +178,25 @@ function submit(event){
 		checkUA(userAnswer());
 	}
 }
+
+//Stores user function into an Array
+function storeUA(answer){ 
+	STORE.questions[STORE.currentQue].u = answer;
+}	
+
+//Checks to see if answer is correct or incorrect
+function checkUA(userAnswer){ 
+  
+	if(userAnswer == STORE.questions[STORE.currentQue].c){
+		STORE.questions[STORE.currentQue].r = 'Correct';
+		$('#result').removeClass('incorrect').addClass('correct');
+    STORE.score++;
+		displayResult('WOW, YOU ARE GOOD')
+	}
+	else {
+		STORE.questions[STORE.currentQue].r = 'Incorrect';
+		$('#result').removeClass('correct').addClass('incorrect');
+		displayResult('NO JOHNS, BUT WRONG ANSWER')
+
+	}
+}
