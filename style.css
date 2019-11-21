@@ -1,44 +1,138 @@
-
+.no-fouc {display: none;} 
 
 body {
+	font-family: 'Cinzel Decorative';
+	font-size: 20px;
+	color: black;
+	box-sizing: border-box;
+	padding:0;
+	margin: 15px;
 	text-align: center;
-}
+  	background: linear-gradient( white, #DF2A2A), no-repeat ; 
+ min-height: 100vh;
+ 	margin: 0;
+	background-size: cover;
 
+}
 
 header{
- border: 1px solid black;
- margin-bottom: 60px;
+display: flex;
+ flex-direction: row;
 }
 
-main{
-border: 1px solid black;
+h1{
+	padding:0; 
+	margin: auto;
+	font-weight: bold;
 }
 #smash-Logo, #smash-Logo-two{
   position: relative;
   width: 50px;
   height: 50px;
+  margin-top: 10px;
 }
 
-
+#smash-Logo-two{
+  justify-content: flex-end;
+}
+#count{
+	font-weight: lighter;
+}
+form {
+	max-width: 960px;
+	margin: auto;
+}
 fieldset{
 	text-align: left;
+	margin: 10px auto;
+	border: 1px solid black;
 }
 
 #question {
+	color: black;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .answersChoice {
 	padding: 5px 0px;
 }
 
+.answersChoice label:hover{
+	color: #E8E8E8;
+}
+
+.resultsPar{
+	padding: 15px 0;
+	margin: 15px 0;
+}
+
+.button{
+	font-family: 'Fantasy', monospace;
+	font-size: 14px;
+	font-weight: bold;
+	letter-spacing: 0.95px;
+	text-transform: uppercase;
+	padding: 6.5px;
+	margin: 0;
+	border:0;
+	color:grey;
+	background-color: black;
+}
+
+.button:hover {
+  color:black;
+		background-color:white;
+}
 footer{
 display: flex;
     justify-content: space-evenly;
-    margin-top: 60px;
-     border: 1px solid black;
+    margin-top: 120px;
+    align-items: flex-end;
 }
+
+#result {
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+	margin: 0;
+}
+
+.correct {
+  color: #004945;
+  }
+.incorrect {
+  color:   #023547;
+  }
+
 #nintendo, #switch {
 width: auto;
   height:30px;
+}
+
+@media (max-width: 500px){
+  header{
+display: flex;
+ flex-direction: row;
+  align-items: center;
+}
+	h1{
+    font-size: 35px;
+    margin:15px;
+    }
+	fieldset{
+    margin:5px;
+    }
+    footer{
+    margin-top: 60px;
+
+    }
+
+    #smash-Logo, #smash-Logo-two{
+  position: relative;
+  width: 30px;
+  height: 30px;
+right: 0px;
+        top: 1px;
+}
 }
