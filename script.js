@@ -143,3 +143,9 @@ let STORE = {
 		$('#buttonCon').hide();
 	}
 }
+
+ // Edits and submits the form.
+ function listeners(form){
+	form.on('change','input[type=radio]', userAnswer)
+		.on('submit', submit);
+}
