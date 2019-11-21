@@ -1,0 +1,42 @@
+body {
+	text-align: center;
+}
+
+
+header{
+ border: 1px solid black;
+ margin-bottom: 60px;
+}
+
+main{
+border: 1px solid black;
+}
+#smash-Logo, #smash-Logo-two{
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+
+fieldset{
+	text-align: left;
+}
+
+#question {
+  text-align: center;
+}
+
+.answersChoice {
+	padding: 5px 0px;
+}
+
+footer{
+display: flex;
+    justify-content: space-evenly;
+    margin-top: 60px;
+     border: 1px solid black;
+}
+#nintendo, #switch {
+width: auto;
+  height:30px;
+}

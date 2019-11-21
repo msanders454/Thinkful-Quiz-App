@@ -92,7 +92,7 @@ let STORE = {
 //Shows Questions and the Question number
   function question(){
 	var currentQue = STORE.currentQue;
-	$('#count').text('Question '+currentQue+' of '+(STORE.questions.length-2));
+	$('#count').text('Question '+currentQue+' of 10');
 	$('#question').text(STORE.questions[currentQue].q);
 	$('#result').hide();
 	firstSelect();
@@ -102,13 +102,13 @@ let STORE = {
 			var introPage = `<p><strong>${answer}</strong></p>`;
 			$('#intro').append(introPage);
 		});
-		$('.answersChoice').hide();
 		$('#buttonSub').show().text('Smash');
 		$('#buttonCon').hide();
+    $('.answersChoice').hide();
 	}
 	else if(currentQue == 11){ // ENDING RESULTS
 		$('#count').css('visibility', 'hidden');
-		getResults();
+		getResult();
 		for (i = 1; i < STORE.questions.length-1; i++){
 				var results = {
 					n: i,
@@ -165,6 +165,32 @@ function firstSelect(){
 	userAnswer();
 }
 
+//Shows User if he is right
+function displayResult(result){ 
+	$('#result').fadeIn();
+	$('#result').text(result);
+  $('answersChoice').hide();
+	$('#buttonSub').hide();
+	$('#buttonCon').show().unbind('click').click(function(e){
+		e.preventDefault();
+		question(STORE.currentQue += 1); 
+
+	});
+}
+
+//Array that stores user answers
+function getResult(){
+	var arrayR=[];
+	for(i = 1 ; i < STORE.questions.length-1; i++){
+		var question = STORE.questions[i].q;
+		var ansNumber = STORE.questions[i].u;
+		var ansString = STORE.questions[i].a[ansNumber];
+		arrayR.push( {q:question, a:ansString} );
+	}
+	return STORE.questions[11].a = arrayR;
+}
+
+
 //Works with Submitt button
 function submit(event){ 
 	event.preventDefault();
@@ -202,32 +228,6 @@ function checkUA(userAnswer){
 
 	}
 }
-
-//Shows User if he is right
-function displayResult(result){ 
-	$('answersChoice').hide();
-	$('#buttonSub').hide();
-	$('#result').fadeIn();
-	$('#result').text(result);
-	$('#buttonCon').show().unbind('click').click(function(e){
-		e.preventDefault();
-		question(STORE.currentQue += 1); 
-
-	});
-}
-
-//Array that stores user answers
-function getResults(){
-	var resultsArray=[];
-	for(i = 1 ; i < STORE.questions.length-1; i++){
-		var question = STORE.questions[i].q;
-		var ansNumber = STORE.questions[i].u;
-		var ansString = STORE.questions[i].a[ansNumber];
-		resultsArray.push( {q:question, a:ansString} );
-	}
-	return STORE.questions[11].a = resultsArray;
-}
-
 
 $(function(){ //DOCUMENT READY!
 	question();
