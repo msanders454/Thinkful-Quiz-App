@@ -35,9 +35,7 @@ h1{
 #smash-Logo-two{
   justify-content: flex-end;
 }
-#count{
-	font-weight: lighter;
-}
+
 form {
 	max-width: 960px;
 	margin: auto;
