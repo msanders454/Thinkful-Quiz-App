@@ -84,4 +84,62 @@ let STORE = {
 					u: null,
 					c: null
 				}]
-	};
+    };
+    
+    
+//Shows Questions and the Question number
+  function question(){
+	var currentQue = STORE.currentQue;
+	$('#count').text('Question '+currentQue+' of '+(STORE.questions.length-2));
+	$('#question').text(STORE.questions[currentQue].q);
+	$('#result').hide();
+	firstSelect();
+	if(currentQue === 0){ // INTRO
+		$('#count').css('visibility', 'hidden');
+		STORE.questions[currentQue].a.forEach(function(answer, index){
+			var introPage = `<p><strong>${answer}</strong></p>`;
+			$('#intro').append(introPage);
+		});
+		$('.answersChoice').hide();
+		$('#buttonSub').show().text('Smash');
+		$('#buttonCon').hide();
+	}
+	else if(currentQue == 11){ // ENDING RESULTS
+		$('#count').css('visibility', 'hidden');
+		getResults();
+		for (i = 1; i < STORE.questions.length-1; i++){
+				var results = {
+					n: i,
+					q: STORE.questions[i].q,
+					c: STORE.questions[i].a[STORE.questions[i].c],
+					u: STORE.questions[i].a[STORE.questions[i].u],
+					r: STORE.questions[i].r
+				}
+			var resultsHTML = `<p>${results.n}. ${results.q}<br>Correct Answer: <b>${results.c}</b><br>Your Answer: <b>${results.u}</b><br>Result: <b>${results.r}</b></p>`;
+      if(i === 1){
+      $('#ending').append(`<span style="font-size:40px;"><br>Your total score is <b>${STORE.score}</b> out of <b>10</b>.</span>`);
+      }
+			$('.answersChoice').hide();
+			$('#ending').hide();
+			$('#ending').append(resultsHTML);
+      if(i === 10){
+      $('#ending').append(`<span style="font-size:40px;"><b>Please press restart to play again</b></span>`);
+      }
+      $('#ending').fadeIn();
+			$('#buttonSub').show().text('Restart');
+			$('#buttonCon').hide();
+		};
+
+
+	}
+	else{ //Actual Questions
+		$('#count').css('visibility', 'visible');
+		$('#intro').hide();
+		$('.answersChoice').show();
+		STORE.questions[currentQue].a.forEach(function(answer, index){ 
+			$('label[for="answer-'+index+'"]').text(answer);
+		});
+		$('#buttonSub').show().text('Submit');
+		$('#buttonCon').hide();
+	}
+}
