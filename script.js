@@ -1,3 +1,5 @@
+document.documentElement.className = 'no-fouc';
+
 let STORE = {
 	currentQue: 0,
   score: 0,
@@ -84,9 +86,9 @@ let STORE = {
 					u: null,
 					c: null
 				}]
-    };
-    
-    
+	};
+
+
 //Shows Questions and the Question number
   function question(){
 	var currentQue = STORE.currentQue;
@@ -145,7 +147,7 @@ let STORE = {
 }
 
  // Edits and submits the form.
- function listeners(form){
+function listeners(form){
 	form.on('change','input[type=radio]', userAnswer)
 		.on('submit', submit);
 }
@@ -198,8 +200,7 @@ function checkUA(userAnswer){
 		$('#result').removeClass('correct').addClass('incorrect');
 		displayResult('NO JOHNS, BUT WRONG ANSWER')
 
-    }
-
+	}
 }
 
 //Shows User if he is right
@@ -226,3 +227,10 @@ function getResults(){
 	}
 	return STORE.questions[11].a = resultsArray;
 }
+
+
+$(function(){ //DOCUMENT READY!
+	question();
+	listeners($('form'));
+	$('.no-fouc').removeClass('no-fouc');
+});
