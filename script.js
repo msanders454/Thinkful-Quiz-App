@@ -198,5 +198,31 @@ function checkUA(userAnswer){
 		$('#result').removeClass('correct').addClass('incorrect');
 		displayResult('NO JOHNS, BUT WRONG ANSWER')
 
+    }
+
+}
+
+//Shows User if he is right
+function displayResult(result){ 
+	$('answersChoice').hide();
+	$('#buttonSub').hide();
+	$('#result').fadeIn();
+	$('#result').text(result);
+	$('#buttonCon').show().unbind('click').click(function(e){
+		e.preventDefault();
+		question(STORE.currentQue += 1); 
+
+	});
+}
+
+//Array that stores user answers
+function getResults(){
+	var resultsArray=[];
+	for(i = 1 ; i < STORE.questions.length-1; i++){
+		var question = STORE.questions[i].q;
+		var ansNumber = STORE.questions[i].u;
+		var ansString = STORE.questions[i].a[ansNumber];
+		resultsArray.push( {q:question, a:ansString} );
 	}
+	return STORE.questions[11].a = resultsArray;
 }
