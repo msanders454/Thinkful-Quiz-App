@@ -149,3 +149,32 @@ let STORE = {
 	form.on('change','input[type=radio]', userAnswer)
 		.on('submit', submit);
 }
+
+
+//Gets user radio and inputs it
+function userAnswer(event){
+	STORE.currentUserAnswer = Number($('input:checked').val());
+	return STORE.currentUserAnswer;
+}
+
+// Always checks first radio
+function firstSelect(){ 
+	$('input[type=radio]:first').prop('checked', true);
+	userAnswer();
+}
+
+//Works with Submitt button
+function submit(event){ 
+	event.preventDefault();
+
+	if(STORE.currentQue === 11 ){
+		window.location.href='';
+	}
+	else if(STORE.currentQue === 0){
+		question(STORE.currentQue += 1); 
+	}
+	else{
+		storeUA(userAnswer());
+		checkUA(userAnswer());
+	}
+}
