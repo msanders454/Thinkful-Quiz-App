@@ -8,7 +8,7 @@ let STORE = {
   //q is question, a is answer, u is user answer, c is correct answer, r is result.
 					// [0] (INTRO)
 					q: 'Welcome the Smash Bros Quiz',
-					a: ['Are you the greatest Smash player?, Well maybe not but at least you know who the characters are. Please press Smash to play. Goodluck and have fun'],
+					a: ['Are you the greatest Smash player? Well maybe not, but at least you know who the characters are. Please press Smash to play. Goodluck and have fun'],
 				},{
 					// [1]
 					q:'Who is the oldest Smash Charcter',
@@ -159,9 +159,9 @@ function userAnswer(event){
 	return STORE.currentUserAnswer;
 }
 
-// Always checks first radio
+// Makes default input clear
 function firstSelect(){ 
-	$('input[type=radio]:first').prop('checked', true);
+	$('input[type=radio]').prop('checked', false);
 	userAnswer();
 }
 
@@ -169,7 +169,7 @@ function firstSelect(){
 function displayResult(result){ 
 	$('#result').fadeIn();
 	$('#result').text(result);
-  $('answersChoice').hide();
+  $('.answersChoice').hide();
 	$('#buttonSub').hide();
 	$('#buttonCon').show().unbind('click').click(function(e){
 		e.preventDefault();
